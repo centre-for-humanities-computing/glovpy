@@ -1,12 +1,12 @@
-# glopy
+# glovpy
 Package for interfacing Stanford's C GloVe implementation from Python.
 
 ## Installation
 
-Install glopy from PyPI:
+Install glovpy from PyPI:
 
 ```bash
-pip install glopy
+pip install glovpy
 ```
 
 Additionally the first time you import glopy it will build GloVe from scratch on your system.
@@ -22,7 +22,7 @@ Here's a quick example of how to train GloVe on 20newsgroups using Gensim's toke
 from gensim.utils import tokenize
 from sklearn.datasets import fetch_20newsgroups
 
-from glopy import GloVe
+from glovpy import GloVe
 
 texts = fetch_20newsgroups().data
 corpus = [list(tokenize(text, lowercase=True, deacc=True)) for text in texts]

@@ -2,7 +2,7 @@
 line-length=79
 
 [tool.poetry]
-name = "glopy"
+name = "glovpy"
 version = "0.1.0"
 description = "Interface for using the canonical C GloVe embedding implementation in Python"
 authors = ["Márton Kardos <power.up1163@gmail.com>"]
