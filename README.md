@@ -98,11 +98,13 @@ You can use this if you want to reuse a generator function so that multiple pass
 
 ### Returns
 
-|    | Type     | Description                                            |
+|  Returns  | Type     | Description                                            |
 |-----------|----------|--------------------------------------------------------|
 | _multigen | _Callable_ | Iterator class wrapping the generator function. |
 
 ### Example usage
+
+Here's how to stream a very long file line by line in a reusable manner.
 
 ```python
 from gensim.utils import tokenize
