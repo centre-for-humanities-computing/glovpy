@@ -51,7 +51,7 @@ for word, similarity in model.wv.most_similar("god"):
 
 ## API Reference 
 
-### `class glovpy.GloVe`
+### `class glovpy.GloVe(vector_size, window_size, symmetric, distance_weighting, alpha, min_count, iter, initial_learning_rate, threads, memory)`
 
 Wrapper around the original C implementation of GloVe.
 
@@ -78,14 +78,14 @@ Wrapper around the original C implementation of GloVe.
 
 ### Methods
 
-#### `glovpy.GloVe.train()`
+#### `glovpy.GloVe.train(tokens)`
 Train the model on a stream of texts.
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | tokens    | _Iterable[list[str]]_ | Stream of documents in the form of lists of tokens. The stream has to be reusable, as the model needs at least two passes over the corpus. |
 
-### `glovpy.utils.reusable`
+### `glovpy.utils.reusable(gen_func)`
 Function decorator that turns your generator function into an
 iterator, thereby making it reusable.
 You can use this if you want to reuse a generator function so that multiple passes can be made.
@@ -94,13 +94,13 @@ You can use this if you want to reuse a generator function so that multiple pass
 
 | Parameter | Type     | Description                                  |
 |-----------|----------|----------------------------------------------|
-| gen_func  | Callable | Generator function that you want to be reusable. |
+| gen_func  | _Callable_ | Generator function that you want to be reusable. |
 
 ### Returns
 
 |    | Type     | Description                                            |
 |-----------|----------|--------------------------------------------------------|
-| _multigen | Callable | Sneakily created iterator class wrapping the generator function. |
+| _multigen | _Callable_ | Iterator class wrapping the generator function. |
 
 ### Example usage
 
