@@ -46,3 +46,37 @@ for word, similarity in model.wv.most_similar("god"):
 | therefore  |  0.8177698255 |
 | desires    |  0.8094088435 |
 | telling    |  0.8083973527 |
+
+## API Reference `class glovpy.GloVe`
+
+Wrapper around the original C implementation of GloVe.
+
+### Parameters
+
+| Name                   | Type              | Description                                                                                      | Default          |
+|------------------------|-------------------|--------------------------------------------------------------------------------------------------|------------------|
+| vector_size            | _int_             | Number of dimensions the trained word vectors should have.                                      | **50**           |
+| window_size            | _int_             | Number of context words to the left (and to the right, if symmetric is True).                   | **15**           |
+| alpha                  | _float_           | Parameter in exponent of weighting function; default 0.75                                       | **0.75**         |
+| symmetric              | _bool_            | If true, both future and past words will be used as context, otherwise only past words will be used. | **True**       |
+| distance_weighting     | _bool_            | If False, do not weight cooccurrence count by distance between words. If True (default), weight the cooccurrence count by inverse of distance between the target word and the context word. | **True** |
+| min_count              | _int_             | Minimum number of times a token has to appear to be kept in the vocabulary.                       | **5**            |
+| iter                   | _int_             | Number of training iterations.                                                                    | **25**           |
+| initial_learning_rate  | _float_           | Initial learning rate for training.                                                               | **0.05**         |
+| threads                | _int_             | Number of threads to use for training.                                                            | **8**            |
+| memory                 | _float_           | Soft limit for memory consumption, in GB. (based on simple heuristic, so not extremely accurate)  | **4.0**           |
+
+### Attributes
+
+| Name | Type | Description |
+|------|------|-------------|
+| wv   | _KeyedVectors_ | Token embeddings in the form of Gensim keyed vectors. |
+
+### Methods
+
+#### `glovpy.GloVe.train()`
+Train the model on a stream of texts.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| tokens    | _Iterable[list[str]]_ | Stream of documents in the form of lists of tokens. The stream has to be reusable, as the model needs at least two passes over the corpus. |
