@@ -1,7 +1,7 @@
 import subprocess
 import tempfile
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, List
 from urllib.parse import quote_plus, unquote_plus
 
 from gensim.models import KeyedVectors
@@ -110,7 +110,7 @@ def train_glove(
 
 
 @reusable
-def encode_tokens(tokens: Iterable[list[str]]) -> Iterable[bytes]:
+def encode_tokens(tokens: Iterable[List[str]]) -> Iterable[bytes]:
     """Encodes all documents into bytes.
     All tokens in a document get url-quoted, then joined by spaces,
     a newline is added and then it is encoded to ascii.
@@ -202,7 +202,7 @@ class GloVe:
         self.threads = threads
         self.memory = memory
 
-    def train(self, tokens: Iterable[list[str]]):
+    def train(self, tokens: Iterable[List[str]]):
         """Train the model on a stream of texts.
 
         Parameters
